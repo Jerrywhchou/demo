@@ -16,8 +16,6 @@ public class reward {
     private String type;
     private Long amount;
     private Integer status;
-    private String createBy;
-    private String updateBy;
     private Date gmtCreate;
     private Date gmtModified;
 

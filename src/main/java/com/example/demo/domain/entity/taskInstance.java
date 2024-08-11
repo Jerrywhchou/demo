@@ -15,8 +15,6 @@ public class taskInstance {
     private String Code;
     private Long userid;
     private Integer status;
-    private String createBy;
-    private String updateBy;
     private Date gmtCreate;
     private Date gmtModified;
 
