@@ -22,19 +22,29 @@ class DemoApplicationTests {
 
 @Test
 	public void testMain() {
+		// 登录
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("please input username");
 		String username = scanner.nextLine();
 		System.out.println("please input password");
 		String password = scanner.nextLine();
 		User user1 = userService.findByUsername(username);
-		if(userService.check(user1.getPassword(), password)){
-			isLogin = true;
-			System.out.println(user1.getUsername()+" "+"login success");
-		}
-		else{
-			System.out.println(user1.getUsername()+" "+"login failed");
-		}
+
+    try {
+        if(userService.check(user1.getPassword(), password)){
+            isLogin = true;
+            System.out.println(user1.getUsername()+" "+"login success");
+        }
+        else{
+            System.out.println(user1.getUsername()+" "+"login failed");
+        }
+    } catch (NullPointerException e) {
+        e.printStackTrace();
+    }
+
+
+    //
+
 
 
 

@@ -21,10 +21,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getUsername, username);
         User user = this.getOne(queryWrapper);
-        if(user == null){
-            System.out.println("username not exist");
+        if(user == null || user.getStatus() ==0){
+            System.out.println("username not exist or user is not valid");
             return null;
         }
+
         return user;
     }
 

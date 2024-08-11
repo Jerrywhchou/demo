@@ -13,17 +13,10 @@ public class Mission {
     private Long id;
     private String name;
     private String Code;
-
     private String type;
-
     private Integer status;
-
     private Date gmtCreate;
-
     private Date gmtModified;
-
-
-
     private String reward;
 
 
