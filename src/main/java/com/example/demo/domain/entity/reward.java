@@ -1,22 +1,25 @@
 package com.example.demo.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.EnumValue;
 
-import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class reward {
+public enum reward {
+    gold(1,"金子"),
+    redPacket(2,"红包");
 
-    private Long id;
-    private String code;
-    private String type;
-    private Long amount;
-    private Integer status;
-    private Date gmtCreate;
-    private Date gmtModified;
+    @EnumValue
+    int id;
+    String description;
+
+    reward(int id,String description) {
+        this.id = id;
+        this.description = description;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getDescription() {
+        return description;
+    }
 
 }

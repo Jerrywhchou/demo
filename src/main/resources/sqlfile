@@ -1,0 +1,79 @@
+1.
+-- auto-generated definition
+create table instance
+(
+    id          int auto_increment comment '自增ID'
+        primary key,
+    code        varchar(20) default ''                not null comment '唯一编码,前台使用',
+    status      tinyint     default 0                 not null comment '状态',
+    userid      bigint      default 0                 not null comment '用户id',
+    create_time datetime    default CURRENT_TIMESTAMP not null comment '创建时间',
+    update_time datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '修改时间'
+);
+
+create index code
+    on instance (code);
+
+create index userid
+    on instance (userid);
+
+
+INSERT INTO mission.instance (id, code, status, userid, create_time, update_time) VALUES (1371625216, 'm01', 1, 1, '2024-08-15 00:38:30', '2024-08-15 00:38:30');
+INSERT INTO mission.instance (id, code, status, userid, create_time, update_time) VALUES (-29487103, 'm01', 1, 1, '2024-08-15 00:18:16', '2024-08-15 00:18:16');
+
+
+
+
+2.
+-- auto-generated definition
+create table mission
+(
+    id          int auto_increment comment '自增ID'
+        primary key,
+    code        varchar(20) default ''                not null comment '唯一编码,前台使用',
+    status      tinyint     default 0                 not null comment '状态',
+    type        int         default 0                 not null comment '类型',
+    create_time datetime    default CURRENT_TIMESTAMP not null comment '创建时间',
+    update_time datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '修改时间',
+    name        varchar(20) default ''                not null comment '任务名称',
+    reward      varchar(20) default ''                not null comment '对应奖励',
+    minumum     int         default 0                 not null comment '需满足的最低级别要求',
+    amount      int         default 0                 not null comment '奖励的数量'
+);
+
+create index code
+    on mission (code);
+
+
+
+INSERT INTO mission.mission (id, code, status, type, create_time, update_time, name, reward, minumum, amount) VALUES (1, 'm01', 1, 1, '2024-08-11 16:47:31', '2024-08-16 08:51:22', 'read', '1', 0, 10);
+INSERT INTO mission.mission (id, code, status, type, create_time, update_time, name, reward, minumum, amount) VALUES (2, 'm02', 1, 2, '2024-08-14 00:36:03', '2024-08-16 08:51:22', 'write', '2', 2, 5);
+
+
+
+
+3.
+-- auto-generated definition
+create table user
+(
+    id           int auto_increment comment '自增ID',
+    username     varchar(20) default ''                not null comment '唯一编码,前台使用',
+    status       tinyint     default 0                 not null comment '状态',
+    level        bigint                                not null comment '级别
+',
+    type         tinyint     default 0                 not null comment '类型',
+    gmt_Create   datetime    default CURRENT_TIMESTAMP not null comment '创建时间',
+    gmt_Modified datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '修改时间',
+    password     varchar(64) default '0'               not null comment '密码',
+    primary key (id, username)
+);
+
+
+
+
+INSERT INTO mission.user (id, username, status, level, type, gmt_Create, gmt_Modified, password) VALUES (1, 'tester01', 1, 1, 1, '2024-08-10 20:46:59', '2024-08-11 14:07:58', 'fcea920f7412b5da7be0cf42b8c93759');
+INSERT INTO mission.user (id, username, status, level, type, gmt_Create, gmt_Modified, password) VALUES (1, 'tester02', 1, 4, 1, '2024-08-10 20:46:59', '2024-08-14 00:48:49', 'fcea920f7412b5da7be0cf42b8c93759');
+
+
+
+

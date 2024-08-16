@@ -10,6 +10,7 @@ import com.example.demo.domain.entity.User;
  */
 public interface UserService extends IService<User> {
 
+
     User findByUsername(String username);
 
 
