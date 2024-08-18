@@ -1,7 +1,14 @@
 package com.example.demo.controller;
+
 import com.example.demo.domain.entity.Instance;
 import com.example.demo.service.AsyncService;
-
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.core.task.TaskRejectedException;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,20 +16,16 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.core.task.TaskRejectedException;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 @Component
 @RequiredArgsConstructor
-@RestController("/insert")
+@EnableAutoConfiguration
+@RestController
+@RequestMapping("/test")
 public class insertController {
 
    private final AsyncService asyncService;
 
-   @GetMapping
+   @GetMapping("/insert")
             public void batchInsert() {
                 int totalRecords = 10000;
                 int batchSize = 2000;
