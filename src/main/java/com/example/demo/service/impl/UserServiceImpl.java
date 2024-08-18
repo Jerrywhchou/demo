@@ -17,6 +17,12 @@ import org.springframework.util.DigestUtils;
 @Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
+    private final UserMapper userMapper;
+
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
     @Override
     public User findByUsername(String username) {
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
@@ -38,6 +44,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         return true;
 
+    }
+
+    @Override
+    public User findById(Long userid) {
+        return userMapper.selectById(userid);
     }
 
 }

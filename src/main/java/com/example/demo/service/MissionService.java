@@ -6,6 +6,7 @@ import com.example.demo.domain.entity.Mission;
 import com.example.demo.domain.entity.User;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * (Mission)表服务接口
@@ -22,6 +23,11 @@ public interface MissionService extends IService<Mission> {
     Mission getMissionById(Integer id);
 
     Mission getMissionByCode(String code);
+
+//    Mission createMission();
+
+//    Mission missionList2Cache(List<Mission> missionList);
+
 
 }
 

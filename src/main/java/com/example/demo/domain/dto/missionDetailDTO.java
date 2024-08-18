@@ -1,5 +1,7 @@
 package com.example.demo.domain.dto;
 
+import com.example.demo.domain.entity.Reward;
+import com.example.demo.domain.entity.missionType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,19 +13,19 @@ public class missionDetailDTO {
 
     private String name;
 
-    private Integer type;
+    private missionType type;
 
     private Integer amount;
 
-    private String reward;
+    private Reward reward;
 
     @Override
     public String toString() {
         return "missionDetailDTO{" +
                 "name='" + name + '\'' +
-                ", type=" + type +
+                ", type=" + type.getDescription() +
                 ", amount=" + amount +
-                ", reward='" + reward + '\'' +
+                ", reward='" + reward.getDescription() + '\'' +
                 '}';
     }
 }

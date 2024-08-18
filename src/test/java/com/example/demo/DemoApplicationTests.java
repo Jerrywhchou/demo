@@ -41,6 +41,9 @@ class DemoApplicationTests {
 		System.out.println("please input password");
 		String password = scanner.nextLine();
 		User user1 = userService.findByUsername(username);
+		if (user1 == null) {
+			System.out.println("user not found");
+		}
 
 		try {
 			if (userService.check(user1.getPassword(), password)) {
@@ -56,9 +59,12 @@ class DemoApplicationTests {
 		//查询用户可用任务
 		Map<String, Mission> map = missionService.missionListForUser(user1);
 
-		//查询任务详情
-		missionDetailDTO detail = missionService.getMissionDetail(map.get("read"));
-		System.out.println(detail.toString());
+		//6.查询任务详情
+		for (Mission mission : map.values()) {
+			missionDetailDTO detail = missionService.getMissionDetail(mission);
+			System.out.println(detail.toString());
+		}
+
 
 		//用户输入，创建实例
 		String line = scanner.nextLine();
@@ -69,7 +75,8 @@ class DemoApplicationTests {
 				Mission mission = missionService.getMissionById(num);
 				Instance instance1 = instanceService.createInstance(mission, user1);
 				System.out.println(instance1.toString());
-				System.out.println("-------------------");
+
+				System.out.println(missionService.getMissionByCode(instance1.getCode()).getName() + "任务，已报名成功");
 
 
 				//用户输入，完成，给奖励
@@ -81,9 +88,12 @@ class DemoApplicationTests {
 				}
 				else if (input.equals("Write") && mission.getType() == missionType.write)
 				{
-					System.out.println("---------------todo---------------");
+					String inputWrite = scanner.nextLine();
+					instanceService.processWrite(inputWrite,instance1);
 				}
-
+				else {
+					System.out.println(mission.getName()+ "is not completed, please try again");
+				}
 
 
 			}
@@ -93,5 +103,6 @@ class DemoApplicationTests {
 
 
 		}
+		else{System.out.println("invalid input. the correct one should start with GO");}
 	}
 }

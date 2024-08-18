@@ -5,6 +5,7 @@ import com.example.demo.domain.entity.Instance;
 import com.example.demo.domain.entity.Mission;
 import com.example.demo.domain.entity.User;
 import com.example.demo.mapper.InstanceMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.InstanceService;
 import com.example.demo.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class InstanceServiceImpl extends ServiceImpl<InstanceMapper, Instance> i
 
     @Autowired
     private MissionService missionService;
+    @Autowired
+    private UserServiceImpl userService;
 
 
     @Override
@@ -38,14 +41,30 @@ public class InstanceServiceImpl extends ServiceImpl<InstanceMapper, Instance> i
     @Override
     public void processRead(Instance instance) {
         instance.setStatus(2);
+        updateById(instance);
         Mission mission = missionService.getMissionByCode(instance.getCode());
-        System.out.println(instance.getCode()+
-                "你参与活动获得" + mission.getAmount() + "个金子，谢谢参与");
+        System.out.println(userService.findById(instance.getUserid()).getUsername()+
+                "你参与活动获得" + mission.getAmount() + "金子，谢谢参与");
 
 
 
     }
 
+    @Override
+    public void processWrite(String inputWrite, Instance instance) {
+        if (inputWrite.equals("Write"))
+        {
+            instance.setStatus(2);
+            updateById(instance);
+            Mission mission = missionService.getMissionByCode(instance.getCode());
+            System.out.println(userService.findById(instance.getUserid()).getUsername()+
+                    "你参与活动获得" + mission.getAmount() + "个红包，谢谢参与");
+        }
+        else {
+            System.out.println(missionService.getMissionByCode(instance.getCode()).getName()+ "is not completed, please try again");
+
+        }
+    }
 
 
 }

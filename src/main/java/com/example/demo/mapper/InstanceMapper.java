@@ -9,5 +9,6 @@ import com.example.demo.domain.entity.Instance;
  * @author makejava
  * @since 2024-08-14 23:49:41
  */
-public interface InstanceMapper extends BaseMapper<Instance> {
+
+public interface InstanceMapper extends EasyBaseMapper<Instance> {
 }

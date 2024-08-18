@@ -17,9 +17,6 @@ public interface InstanceService extends IService<Instance> {
 
     void processRead(Instance instance);
 
-
-
-
-
+    void processWrite(String inputWrite, Instance instance);
 }
 

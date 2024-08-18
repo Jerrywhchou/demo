@@ -7,11 +7,14 @@ import com.example.demo.domain.entity.Mission;
 import com.example.demo.domain.entity.User;
 import com.example.demo.mapper.MissionMapper;
 import com.example.demo.service.MissionService;
+import com.example.demo.utils.RedisCache;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * (Mission)表服务实现类
@@ -23,12 +26,12 @@ import java.util.List;
 public class MissionServiceImpl extends ServiceImpl<MissionMapper, Mission> implements MissionService {
 
 
-
     @Override
     public HashMap<String, Mission> missionListForUser(User user) {
         LambdaQueryWrapper<Mission> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.lt(Mission::getMinumum, user.getLevel());
         List<Mission> missions = this.list(queryWrapper);
+        missions = missions.stream().filter(u->u.getStatus()>0).toList();
         HashMap<String, Mission> map = null;
         if (missions.isEmpty()) {
             System.out.println("no available mission");
@@ -37,13 +40,13 @@ public class MissionServiceImpl extends ServiceImpl<MissionMapper, Mission> impl
             for (Mission mission : missions) {
                 map.put(mission.getName(), mission);
             }
+            System.out.println();
             map.values().forEach(value -> {
-                System.out.println(value.getName() + " " + value.getAmount() +" " + value.getReward());
+                System.out.println("完成"+value.getName() + "任务，可获得" + value.getAmount() + "个" + value.getReward()+"的奖励");
             });
         }
         return map;
     }
-
 
 
 
@@ -69,7 +72,10 @@ public class MissionServiceImpl extends ServiceImpl<MissionMapper, Mission> impl
         return mission;
     }
 
-
+//    @Override
+//    public Mission missionList2Cache(List<Mission> missionList) {
+//        ;
+//    }
 
 
 }

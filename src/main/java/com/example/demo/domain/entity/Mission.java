@@ -36,7 +36,7 @@ private missionType type;
 //任务名称
  private String name;
 //对应奖励
- private String reward;
+ private Reward reward;
 //需满足的最低级别要求
  private Integer minumum;
 //奖励的数量
