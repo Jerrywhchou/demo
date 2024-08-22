@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(scanBasePackages = "com.example.demo")
 @MapperScan("com.example.demo.mapper")
 @ComponentScan("com.example.demo.service")
+@ComponentScan("com.example.demo.controller")
 public class DemoApplication {
 
 	public static void main(String[] args) {

@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.injector.methods.InsertBatchSomeColumn
 
 import java.util.List;
 
+
 public class EasySqlInjector extends DefaultSqlInjector {
 
     @Override
@@ -17,5 +18,4 @@ public class EasySqlInjector extends DefaultSqlInjector {
         methodList.add(new InsertBatchSomeColumn(i -> i.getFieldFill() != FieldFill.UPDATE));
         return methodList;
     }
-
 }

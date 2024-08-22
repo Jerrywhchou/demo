@@ -1,9 +1,11 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Collection;
 
+@Mapper
 public interface EasyBaseMapper<T> extends BaseMapper<T> {
     /**
      * 批量插入 仅适用于mysql
@@ -11,5 +13,5 @@ public interface EasyBaseMapper<T> extends BaseMapper<T> {
      * @param entityList 实体列表
      * @return 影响行数
      */
-    int insertBatchSomeColumn(Collection<T> entityList);
+    Integer insertBatchSomeColumn(Collection<T> entityList);
 }
