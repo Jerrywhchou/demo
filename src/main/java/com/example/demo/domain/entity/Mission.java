@@ -28,7 +28,7 @@ private String code;
 //状态  0-失效， 1-有效
 private Integer status;
 //类型
-private missionType type;
+private MissionType type;
 //创建时间
  private Date createTime;
 //修改时间

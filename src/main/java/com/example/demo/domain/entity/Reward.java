@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 
 
 public enum Reward {
-    gold(1,"金子"),
-    redPacket(2,"红包");
+    GOLD(1,"金子"),
+    REDPACKET(2,"红包");
 
     @EnumValue
     int id;

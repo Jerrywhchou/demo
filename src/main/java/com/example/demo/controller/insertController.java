@@ -40,7 +40,6 @@ public class insertController {
                         instance.setCode("code_" + ThreadLocalRandom.current().nextInt(1000000));
                         instance.setStatus(ThreadLocalRandom.current().nextInt(3));
                         instance.setUserid(ThreadLocalRandom.current().nextLong(1000000));
-                        instance.setId(ThreadLocalRandom.current().nextInt(100000000));
                         instance.setCreateTime(new Date());
                         instance.setUpdateTime(new Date());
                         batchList.add(instance);

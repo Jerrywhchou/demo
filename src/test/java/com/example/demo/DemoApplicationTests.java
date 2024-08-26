@@ -4,7 +4,7 @@ import com.example.demo.domain.dto.missionDetailDTO;
 import com.example.demo.domain.entity.Instance;
 import com.example.demo.domain.entity.Mission;
 import com.example.demo.domain.entity.User;
-import com.example.demo.domain.entity.missionType;
+import com.example.demo.domain.entity.MissionType;
 import com.example.demo.service.InstanceService;
 import com.example.demo.service.MissionService;
 import com.example.demo.service.UserService;
@@ -81,12 +81,12 @@ class DemoApplicationTests {
 
 				//用户输入，完成，给奖励
 				String input = scanner.nextLine();
-				if (input.equals("ReadAction") && mission.getType() == missionType.read)
+				if (input.equals("ReadAction") && mission.getType() == MissionType.read)
 				{
 						instanceService.processRead(instance1);
 
 				}
-				else if (input.equals("Write") && mission.getType() == missionType.write)
+				else if (input.equals("Write") && mission.getType() == MissionType.write)
 				{
 					String inputWrite = scanner.nextLine();
 					instanceService.processWrite(inputWrite,instance1);

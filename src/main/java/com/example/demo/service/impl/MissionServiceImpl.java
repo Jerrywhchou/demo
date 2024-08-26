@@ -7,14 +7,11 @@ import com.example.demo.domain.entity.Mission;
 import com.example.demo.domain.entity.User;
 import com.example.demo.mapper.MissionMapper;
 import com.example.demo.service.MissionService;
-import com.example.demo.utils.RedisCache;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * (Mission)表服务实现类
